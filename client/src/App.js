@@ -49,24 +49,17 @@ function App() {
       
       <div className="container mt-3">
         <Routes>
+
           <Route path="/" element={<ListAirbnb />} />
-          <Route path="/airbnb" element={<ListAirbnb />} />           
-          <Route 
-            path="airbnb/:id/review"
-            render={(props) => (
-              <AddReview {...props} user={user} />
-            )}
-          />
-          <Route 
-            path="/airbnb/:id"
-            element={<Airbnb user={user} />}
-          />
-          <Route 
-            path="/login"
-            render={(props) => (
-              <Login {...props} login={login} />
-            )}
-          />
+
+          <Route path="/airbnb" element={<ListAirbnb />} />
+
+          <Route path="airbnb/:id/review" element={<AddReview authed={true} user={user} />}/>
+
+          <Route path="/airbnb/:id" element={<Airbnb authed={true} user={user} />} />
+
+          <Route path="/login" element={<Login authed={true} login={login} />} />
+
         </Routes>
       </div>
 
