@@ -1,0 +1,61 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.navbar{
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+}
+
+.navbar-nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.other-search {
+  display: flex;
+  flex-direction: row;
+}
+
+.other-search button {
+  margin-right: 3rem;
+}
+
+.search {
+  background-color: lightgray;
+  padding: 20px;
+  margin-bottom: 3rem;
+}
+
+.each {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-box{
+  display: flex;
+  flex-direction: row;
+}
+
+.info-box img{
+  width: 50%;
+  margin-right: 2rem;
+}
+
+.facilities button {
+  padding: .5rem;
+  margin: .5rem;
+  background-color: tomato;
+}
+
+.information {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
