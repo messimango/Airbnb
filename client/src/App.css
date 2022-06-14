@@ -59,3 +59,59 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.airbnb-info{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: lightgray;
+  padding: 1rem;
+}
+
+.airbnb-rating {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.airbnb-rating h1 {
+  font-family: "Poppins";
+  font-weight: bolder;
+}
+
+.normal-rating {
+  display: flex;
+  flex-direction: row;
+}
+
+.normal-rating div {
+  padding: 1rem;
+}
+
+.normal-rating div button{
+  background-color: lightblue;
+  border: 1px solid salmon;
+  padding: .2rem;
+  border-radius: 20%;
+}
+
+.ratings{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.ratings h5{
+  background-color: lightblue;
+  width: 5rem;
+}
+
+.rating-total-btn{
+  background: none;
+  border: none;
+}

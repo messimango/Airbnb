@@ -4,9 +4,9 @@ class AirbnbDataSer {
 
     find(query, by = "name", page = 0) {
         return http.get(`?${by}=${query}&page=${page}`);
-      } 
+    } 
     
-    getAll(id) {
+    get(id) {
         return http.get(`/id/${(id)}`);
     }
 

@@ -13,8 +13,8 @@ const ListAirbnb = props => {
 
     useEffect(() => {
         retrieveAirbnb();
-        retrieveProperty();
-        retrieveCountry();
+        // retrieveProperty();
+        // retrieveCountry();
     }, []);
 
     const onChangeSearchName = e => {
@@ -36,8 +36,7 @@ const ListAirbnb = props => {
     const retrieveAirbnb = () => {
         airbnbSer.getAll()
           .then(response => {
-            console.log(response.data);
-            setAirbnb(response.data.airbnb);
+            setAirbnb(response.data.airbnb)
             
         })
           .catch(e => {
@@ -48,7 +47,6 @@ const ListAirbnb = props => {
     const retrieveProperty = () => {
         airbnbSer.getProperty()
           .then(response => {
-            console.log(response.data);
             setProperty(["Properties"].concat(response.data));
             
         })
@@ -60,7 +58,6 @@ const ListAirbnb = props => {
     const retrieveCountry = () => {
         airbnbSer.getCountry()
           .then(response => {
-            console.log(response.data);
             setCountry(["Countries"].concat(response.data));
             
         })
@@ -164,18 +161,21 @@ const ListAirbnb = props => {
                                             <h6>Price: ${Object.values(airbnb.price)}</h6>
 
                                             <div className="facilities">
-                                                <button><i class="fa-solid fa-person"></i>{airbnb.accommodates}</button>
-                                                <button><i class="fa-solid fa-bed"></i>{airbnb.beds}</button>
-                                                <button><i class="fa-solid fa-toilet"></i>{Object.values(airbnb.bathrooms)}</button>
+                                                <button><i className="fa-solid fa-person"></i>{airbnb.accommodates}</button>
+                                                <button><i className="fa-solid fa-bed"></i>{airbnb.beds}</button>
+                                                <button><i className="fa-solid fa-toilet"></i>{Object.values(airbnb.bathrooms)}</button>
                                             </div>
 
                                             <div className="row">
                                                 <p>
                                                     Rating: <strong>{airbnb.review_scores.review_scores_rating}</strong>
-                                                    <Link to={"/airbnb/"+airbnb._id} className="btn btn-warning col-lg-5 mx-1 mb-1">
-                                                        View Reviews
-                                                    </Link>
                                                 </p>
+                                                <Link to={"/airbnb/"+airbnb._id} className="btn btn-warning col-lg-5 mx-1 mb-1">
+                                                    View Reviews
+                                                </Link>
+                                                <br></br>
+                                                <a href={airbnb.listing_url} target="_blank" ><button className="btn btn-success col-lg-5">Book Now</button></a>
+                                                
                                                 
                                             </div>
                                         </div>

@@ -13,7 +13,6 @@ const port = process.env.PORT || 8000
 MongoClient.connect(
     process.env.AIRBNBREVIEWS_DB_URI,
     {
-        maxPoolSize: 20,
         wtimeoutMS: 3000,
         useNewUrlParser: true   
     })
