@@ -13,8 +13,8 @@ const ListAirbnb = props => {
 
     useEffect(() => {
         retrieveAirbnb();
-        // retrieveProperty();
-        // retrieveCountry();
+        retrieveProperty();
+        retrieveCountry();
     }, []);
 
     const onChangeSearchName = e => {

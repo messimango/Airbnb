@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "http://localhost:5000/airbnb",
+  baseURL: "https://mern-airbnb-rating.herokuapp.com/airbnb",
   headers: {
     "Content-type": "application/json"
   }

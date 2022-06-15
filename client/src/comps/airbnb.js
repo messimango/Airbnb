@@ -17,7 +17,8 @@ const Airbnb = props => {
     summary: "",
     property_type: "",
     listing_url: "",
-    review_scores: {review_scores_rating: "No Ratings",review_scores_accuracy:"n/a", review_scores_checkin:"n/a", review_scores_cleanliness: "n/a", review_scores_commucation:"n/a",review_scores_location:"n/a",review_scores_value:"0"}
+    review_scores: {review_scores_rating: "No Ratings",review_scores_accuracy:"n/a", review_scores_checkin:"n/a", review_scores_cleanliness: "n/a", review_scores_commucation:"n/a",review_scores_location:"n/a",review_scores_value:"0"},
+    reviews: []
   };
 
   const [airbnb, setAirbnb] = useState(initialAirbnbState);
@@ -37,6 +38,21 @@ const Airbnb = props => {
   useEffect(() => {
     getAirbnb(id);
   }, [id]);
+
+  const deleteReview = (reviewId, index) => {
+    airbnbSer.deleteReview(reviewId, props.user.id)
+      .then(response => {
+        setAirbnb((prevState) => {
+          prevState.reviews.splice(index, 1)
+          return({
+            ...prevState
+          })
+        })
+      })
+      .catch(e => {
+        console.log(e);
+      });
+  };
 
   return (
     <div className='airbnb-main'>
@@ -89,22 +105,45 @@ const Airbnb = props => {
 
         <div>
           <h1>Reviews</h1>
+          <Link to={"/airbnb/" + id + "/review"} className="btn btn-primary">
+            Add Review
+          </Link>
+            <div className="row">
+              {airbnb.reviews.length > 0 ? (
+              airbnb.reviews.map((review, index) => {
+                return (
+                  <div className="col-lg-4 pb-1" key={index}>
+                    <div className="card">
+                      <div className="card-body">
+                        <p className="card-text">
+                          {review.text}<br/>
+                          <strong>User: </strong>{review.name}<br/>
+                          <strong>Date: </strong>{review.date}
+                        </p>                        
+                            <div className="row">
+                              <a onClick={() => deleteReview(review._id, index)} className="btn btn-primary col-lg-5 mx-1 mb-1">Delete</a>
+                              <Link to={{
+                                pathname: "/airbnb/" + id + "/review",
+                                state: {
+                                  currentReview: review
+                                }
+                              }} className="btn btn-primary col-lg-5 mx-1 mb-1">Edit</Link>
+                            </div> 
+                      </div>
+                    </div>
+                  </div>
+                );
+              })
+              ) : (
+              <div className="col-sm-15">
+                <p>No reviews yet.</p>
+              </div>
+              )}
+
+            </div>
         </div>
 
       </div>
-
-      <div className="row">
-            {airbnb.reviews.length > 0 ? (
-              <div>
-                
-              </div>
-             ) : (
-            <div className="col-sm-4">
-              <p>No reviews yet.</p>
-            </div>
-            )}
-
-          </div>
       
     </div>
   );

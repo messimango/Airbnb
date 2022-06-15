@@ -69,6 +69,10 @@
   padding: 1rem;
 }
 
+.airbnb-info img{
+  width: 80%;
+}
+
 .airbnb-rating {
   display: flex;
   flex-direction: column;
